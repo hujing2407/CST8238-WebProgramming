@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>Lab 4</title>
+
+
+  
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">    
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> 
+	<style>
+
+		h3{
+			margin-top: 20px;
+		  } 
+	</style>
+
+
+<script type="text/javascript">
+
+function converttemperature()
+		{	
+			/* prompt input the option */
+			var option = prompt("Please enter a temperature unit( 1:To convert into Celsius, 2:To convert into Fahrenheit)");
+			/* validate the input for option is 1 or 2 */
+			if(isNaN(parseInt(option)) || (option != 1 && option != 2)){
+				do{
+					alert("You did not enter a valid option number");
+					option = prompt("Please enter a temperature unit( 1:To convert into Celsius, 2:To convert into Fahrenheit)");
+
+				}while(isNaN(parseInt(option)) || (option != 1 && option != 2));
+			}
+
+			/* prompt input the temperature */
+			var temp = prompt("Please enter a temperature value to be converted to Celsius/Fahrenheit");
+			/* validate the input for temperature is a number */
+			if(isNaN(parseInt(temp)) ){
+				do{
+					alert("You did not enter a valid  temperature value");
+					temp = prompt("Please enter a temperature value to be converted to Celsius/Fahrenheit");
+					/* alert(option != 1 && option != 2); */
+				}while(isNaN(parseInt(temp)));
+			}
+
+			/* Calculate the convertion */
+			var result;
+			if(option == 1){
+				result = fahrenheitToCelsius(temp);
+				alert(temp + " fahrenheit converted to " + result + " celsius!");
+			}else{
+				result = celsiusToFahrenheit(temp);
+				alert(temp + " celsius converted to " + result + " fahrenheit!");
+			}
+			
+		}
+	function fahrenheitToCelsius(f) {
+		return 5 / 9 * (f - 32);
+	}
+	function celsiusToFahrenheit(c) {
+		return (c * 9 / 5) + 32;
+	}
+</script> 
+  
+</head>
+
+<body>
+
+ 
+      <h3>Temperature Converter Using Bootstrap Template</h3> 
+      <h3>  ------------------------------------------------------</h3>	  
+        <h4>This program converts from Celsius to Fahrenheit and vice versa</h4>
+           <h4>  -------------------------------------------------------------</h4>
+		   <h5>Please click Convert button to perform temperature conversion</h5>
+           <h5>  -------------------------------------------------------------</h5>
+		   
+		  <table>      
+        	<tr>
+			    <td><input onclick="converttemperature()" name="btnConvert" id="btnConvert" value="Convert!" type="button"></td>				
+		    </tr>       
+          </table>
+
+</body>
+</html>

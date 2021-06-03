@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Concept of Web Technology</title>
+</head>
+
+<body>
+    <h2>Q1:Define HTML. (1 mark)</h2>
+    <h3>A1:HTML,HyperText Markup Language, is a markup language</h3>
+
+    <h2>Q2:Define Client-server model of communications. (1 mark)</h2>
+    <h3>A2:The Server is a computer agent that is listening for queries from any client who make a request.<br>
+        A client is a computer agent that makes requrests and receives responses from the server, in the form of response codes, images, test files, and other data.</h3>
+
+    <h2>Q3:Write down the name of different types of servers. (1 mark)</h2>
+    <h3>A3:Web server, Email server, Media server, Data server, Application server, Authentication server.</h3>
+
+    <h2>Q4:Define a Web Server. (1 mark)</h2>
+    <h3>A4: A web server is, at a fundamental level, nothing more than a computer that responds to HTTP requests.</h3>
+
+    <h2>Q5:Define Data Centers. (1 mark)</h2>
+    <h3>A5:Server farms are typically housed in special facilities called data centers.</h3>
+
+    <h2>Q6:Why do we need a Uniform Resource Locator (URL)? (1 mark)</h2>
+    <h3>A6:In order to allow clients to request particular resources from the server.</h3>
+
+    <h2>Q7:Give an example of Uniform Resource Locator (URL) and specify all components of an URL. (2 marks)</h2>
+    <h3>A7:http://www.funwebdev.com/index.php?page=17#article<br>
+        <ul>
+            <li>http -- protocol</li>
+            <li>www.funwebdev.com -- domain</li>
+            <li>index.php -- path</li>
+            <li>page=17 -- query string</li>
+            <li>article -- fragment</li>
+        </ul>
+    </h3>
+
+    <h2>Q8:What is the difference between a static and a dynamic web site? (1 mark)</h2>
+    <h3>A8:Static web site consits only of HTML pages that look indentical for all users all times <br>
+        The page content of dynamic web site is being created at run-time by a program; this page content can vary for user to user. 
+    </h3>
+
+    <h2>Q9:Why do we need Domain Name System (DNS)? (1 mark)</h2>
+    <h3>A9:Human beings do not enjoy having to recall long strings of numbers (IP addresses).</h3>
+
+    <h2>Q10:Describe in detail the process of DNS address resolution? (3 marks)</h2>
+    <h3>A10:The process of DNS address resolution
+        <ol>
+            <li>Input a domain name in web browser, DNS Resolver check it's in browser's cache or not.</li>
+            <li>If domain name in browser's cache, return IP address to browser and then browser requrests pages.</li>
+            <li>If domain name is not in browser's cache, resolver makes request for IP address to ISP's DNS Server.</li>
+            <li>If ISP's DNS Server found domain name in it's DNS cache, return IP address to DNS Resolver.</li>
+            <li>If the primary DNS server doesn't have the domain name in its DNS cache, it sends out to the root name server.</li>
+            <li>Root name server returns IP of name server for requested TLD.</li>
+            <li>The primary DNS server request IP of name server for the domain name.</li>
+            <li>gTLD server will return IP address of DNS server for this domain name.</li>
+            <li>The primary DNS server request for IP address for this domain name to DNS server.</li>
+            <li>DNS serer return IP address of web server to Primary DNS server, and then it return to DNS resolver.</li>
+            <li>Then, DNS resolver return IP address the domain name to web browser.</li>
+            <li>Web browser request page to Web server based on IP address.</li>
+            <li>Web server returns requested page to web browser.</li>
+        </ol>
+    </h3>
+
+    <h2>Q11:Give some examples of generic top-Level domains (gTLD). (1 mark)</h2>
+    <h3>A11:.com, .org, .gov, .edu</h3>
+
+    <h2>Q12:Give some examples of country code top-Level domains (ccTLD). (1 mark)</h2>
+    <h3>A12:.ca, .us, .fr</h3>
+
+    <h2>Q13:How can you pass a user’s information from the client to the web server? (1 mark)</h2>
+    <h3>A13:
+        Web browsers can place data into the web requests for passing inforamtion to the web server.
+    </h3>
+
+    <h2>Q14:What is the function (purpose) of Hypertext Transfer Protocol (HTTP)? (1 mark)</h2>
+    <h3>A14: The function of HTTP is to establish a TCP connection on port 80 (by default) with the server and send HTML pages back to the user's browser.</h3>
+
+    <h2>Q15:Describe how a single web page is displayed on a web browser. (2 marks)</h2>
+    <h3>A15:Web browser facilitate the initial HTML page, then parses the returned HTML to find all the resources referenced from within it, like images, style sheets and scripts. <br>
+        Only when all the files have been retrived is the page fully loaded for the user.
+    </h3>
+
+    <h2>Q16:Give some examples of HTTP request methods. (1 mark)</h2>
+    <h3>A16:GET, POST, PUT, DELETE, CONNECT, TRACE and OPTIONS</h3>
+
+</body>
+
+</html>
