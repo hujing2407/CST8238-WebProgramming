@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Event Move Smoothly</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <script>
+
+        window.onload = function () {
+            // var box1 = document.getElementById("box1");
+            var speed = 0;
+                            
+            var direct= 0;
+
+            setInterval(function () {
+                // console.log(event.keyCode);
+                // 37 left 38 up 39 right 40 down
+                switch (direct) {
+                    case 37:
+                        // alert("left");
+                        box1.style.left = box1.offsetLeft - speed + "px";
+                        break;
+                    case 38:
+                        // alert("up");
+                        box1.style.top = box1.offsetTop - speed + "px";
+                        break;
+                    case 39:
+                        // alert("right");
+                        box1.style.left = box1.offsetLeft + speed + "px";
+                        break;
+                    case 40:
+                        // alert("down");
+                        box1.style.top = box1.offsetTop + speed + "px";
+                        break;
+                }
+            }, 30);
+
+            document.onkeydown = function (event) {
+                event = event || window.event;
+
+                direct = event.keyCode;
+                if (event.ctrlKey) {
+                    speed = 50;
+                } else {
+                    speed = 10;
+                }
+            }
+
+            document.onkeyup = function(event){
+                event = event || window.event;
+                direct = 0;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+</body>
+
+</html>

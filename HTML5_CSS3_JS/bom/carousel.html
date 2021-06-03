@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pic Loop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            width: 980px;
+            height: 500px;
+            margin: 50px auto;
+            background-color: #bfa;
+            padding: 10px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #imgList {
+            list-style: none;
+            /* setup width for ul */
+            width: 3000px;
+            position: absolute;
+            left: 0px;
+
+        }
+
+        #imgList li {
+            /* setup float */
+            float: left;
+            /* setup margin */
+            margin: 0 10px;
+
+        }
+
+        /* setup naviPoints  */
+        #navDiv {
+            position: absolute;
+            /* setup position */
+            bottom: 15px;
+            /* centerlize:
+                outer width = 980
+                navDiv width = 85;
+                (980 - 85) /2 = 447.5*/
+            /* left : 447px; */
+        }
+
+        #navDiv a {
+            float: left;
+            width: 15px;
+            height: 15px;
+            background-color: red;
+            margin: 0 5px;
+            /* transparent setup */
+            opacity: 0.5;
+            /* compacity with IE8 */
+            filter: alpha(opacity=50);
+        }
+
+        /* setup hover effect */
+        #navDiv a:hover {
+            background-color: darkblue;
+        }
+    </style>
+    <!-- import tools.js (move function) -->
+    <script src="../js/tools.js"></script>
+    <script>
+        window.onload = function () {
+            var imgList = document.getElementById("imgList");
+            // get all pictures
+            var imgArr = document.getElementsByTagName("img");
+            // set imgList width
+            imgList.style.width = 980 * imgArr.length + "px";
+
+            // setup navPoint located in center-bottom
+            var navDiv = document.getElementById("navDiv");
+            var outer = document.getElementById("outer");
+            navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + "px";
+
+            // initiate index
+            var index = 0;
+            // get a list
+            var allA = document.getElementsByTagName("a");
+            // setup choosen effect
+            allA[index].style.backgroundColor = "black";
+
+            /* click the href point, show the picture */
+            for (let i = 0; i < allA.length; i++) {
+                // mark the href/a tag with number
+                allA[i].num = i;
+                // bind onclick event function
+                allA[i].onclick = function () {
+                    // close autoChange interval
+                    clearInterval(timer);
+                    // get the href index value;
+                    index = this.num;
+                    // imgList.style.left = -index * 980 + "px";
+                    // modify the backgroudColor of href point 
+                    setA();
+                    move(imgList, "left", -980 * index, 20, function () {
+                        // after it moved to click one,then auto change
+                        autoChange();
+                    });
+
+                }
+                
+            };
+            autoChange();
+            // function setA: reset href backgroud color
+            function setA() {
+                if (index >= imgArr.length-1) {
+                    index =0;
+                    // the last one is same to the first
+                    // using CSS replace it to the first position
+                    imgList.style.left = 0;
+                }
+                for (let i = 0; i < allA.length; i++) {
+                    allA[i].style.backgroundColor = "";
+                }
+                allA[index].style.backgroundColor = "black";
+            };
+
+            var timer;
+            // function autoChange: auto change pictures
+            function autoChange() {
+                timer = setInterval(function () {
+                    // index++, change to next pict
+                    index = ++index%imgArr.length;
+                    move(imgList, "left", -980 * index, 50, function () {
+                        setA();
+                    });
+                }, 2000);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!-- div container -->
+    <div id="outer">
+        <!-- ul for storing pictures -->
+        <ul id="imgList">
+            <li><img src="./img/5.jpg"></li>
+            <li><img src="./img/6.jpg"></li>
+            <li><img src="./img/7.jpg"></li>
+            <li><img src="./img/5.jpg"></li>
+        </ul>
+        <!-- create navi points -->
+        <div id="navDiv">
+            <a href="javescript:;"></a>
+            <a href="javescript:;"></a>
+            <a href="javescript:;"></a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM Timeout</title>
+    <script>
+        window.onload = function(){
+            var count = document.getElementById("count");
+/*             for (let index = 0; index < 10; index++) {
+                count.innerHTML = index;
+            } */
+            var num = 1;
+            var timer = setInterval(function(){
+                count.innerHTML = num++;
+                if (num == 10) {
+                    count.innerHTML = "Time(10s) is out!"
+                    clearInterval(timer);
+                }
+            },1000);
+        }    
+    </script>
+</head>
+<body>
+    <h1 id="count"></h1>
+</body>
+</html>
